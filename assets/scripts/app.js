@@ -18,18 +18,18 @@ const checkNumber = function () {
     console.log(randomNumber);
     //too low:
     if (randomNumber > enteredNumberValue) {
-      info = "Too low!";
+      info = "🤏Too low!";
       score -= score;
     }
     //equal
     else if (randomNumber === enteredNumberValue) {
-      info = "Correct Number!";
+      info = "🎉Correct Number!";
       highScore = 20 - tryNumber;
       document.body.style.backgroundColor = "green";
     }
     //too high
     else if (randomNumber < enteredNumberValue) {
-      info = "Too high!";
+      info = "👆Too high!";
       score -= score;
     }
   }
