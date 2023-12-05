@@ -20,30 +20,35 @@ const checkNumber = function () {
 
     const enteredNumberValue =
       document.querySelector(".enterednumbervalue").value;
-    console.log(+enteredNumberValue, 'entered');
-    //too low:
-    if (randomNumber > +enteredNumberValue) {
-      info.textContent = "🤏Too low!";
-      console.log(totaltry, 'totaltry');
-      score.textContent = totaltry - 1;
-      totaltry -= 1;
+    if (!enteredNumberValue) alert("enter a number")
+    else {
+      console.log(+enteredNumberValue, 'entered');
+      //too low:
+      if (randomNumber > +enteredNumberValue) {
+        info.textContent = "🤏Too low!";
+        console.log(totaltry, 'totaltry');
+        score.textContent = totaltry - 1;
+        totaltry -= 1;
+      }
+      //equal
+      else if (randomNumber === +enteredNumberValue) {
+        info.textContent = "🎉Correct Number!";
+        highScore.textContent = 20 - tryNumber;
+        document.body.style.backgroundColor = "green";
+        // document.querySelector('enterednumbervalue').style.backgroundColor = "green";
+        document.querySelector('.square').textContent = randomNumber;
+      }
+      //too high
+      else if (randomNumber < +enteredNumberValue) {
+        info.textContent = "👆Too high!";
+        score.textContent = totaltry - 1;
+        totaltry -= 1;
+      }
+      tryNumber += 1;
     }
-    //equal
-    else if (randomNumber === +enteredNumberValue) {
-      info.textContent = "🎉Correct Number!";
-      highScore.textContent = 20 - tryNumber;
-      document.body.style.backgroundColor = "green";
-      // document.querySelector('enterednumbervalue').style.backgroundColor = "green";
-      document.querySelector('.square').textContent = randomNumber;
-    }
-    //too high
-    else if (randomNumber < +enteredNumberValue) {
-      info.textContent = "👆Too high!";
-      score.textContent = totaltry - 1;
-      totaltry -= 1;
-    }
-    tryNumber += 1;
   }
+  else
+    alert("your choices finished")
 };
 
 checkBtn.addEventListener("click", checkNumber);
