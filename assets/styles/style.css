@@ -1,14 +1,17 @@
 @import url("https://fonts.cdnfonts.com/css/perfect-dos-vga-437");
+
 * {
   box-sizing: border-box;
   background-color: rgb(221, 215, 215);
   font-family: "Perfect DOS VGA 437", "Fixedsys";
   background-color: black;
 }
+
 .banner {
   display: flex;
   justify-content: space-between;
 }
+
 .banner button {
   color: black;
   background-color: white;
@@ -16,10 +19,12 @@
   height: 3rem;
   font-size: 2rem;
 }
+
 .banner h3 {
   color: white;
   margin-top: 0;
 }
+
 .guesstxt {
   color: white;
   text-align: center;
@@ -39,21 +44,25 @@
   text-align: center;
   transform: translate(-50%, 50%);
 }
+
 .line {
   height: 10px;
   width: 100%;
   background-color: white;
 }
+
 #footer {
   display: flex;
   flex-direction: row;
   margin-top: 9rem;
   justify-content: space-around;
 }
+
 .enterednumber {
   display: flex;
   flex-direction: column;
 }
+
 .enterednumber input {
   margin-top: 1.5rem;
   height: 6.6rem;
@@ -78,10 +87,12 @@
 .stats h1 {
   color: white;
 }
+
 .score-label,
 .highscore-label {
   color: white;
   font-size: 1.7rem;
+  margin-bottom: 0;
 }
 
 .statsdetails {

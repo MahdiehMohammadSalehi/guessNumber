@@ -1,37 +1,46 @@
-const enteredNumberValue =
-  document.getElementsByClassName("enterednumbervalue");
+'use strict'
+// const enteredNumberValue =
+//   document.querySelector(".enterednumbervalue").textContent;
 const checkBtn = document.getElementById("checkbtn");
-let score = document.getElementById("score").textContent;
-let highScore = document.getElementById("highscore");
+let score = document.querySelector(".score");
+let highScore = document.querySelector(".highscore");
 let info = document.getElementById("info");
 let tryNumber = 0;
+let totaltry = 20;
 // const createRandomNumber = function () {
 //   let randomNumber = Math.random() * (20 - 1) + 1;
 //   return randomNumber;
 // };
-const createRandomNumber = () => Math.random() * (20 - 1) + 1;
+const createRandomNumber = () => Math.trunc(Math.random() * 20) + 1;
+const randomNumber = createRandomNumber();
+console.log(Number(randomNumber), 'randomnum');
 
 const checkNumber = function () {
-  while (+score > 0) {
-    tryNumber += 1;
-    // const randomNumber = createRandomNumber();
-    console.log(randomNumber);
+  if (totaltry > 0) {
+
+    const enteredNumberValue =
+      document.querySelector(".enterednumbervalue").value;
+    console.log(+enteredNumberValue, 'entered');
     //too low:
-    if (randomNumber > enteredNumberValue) {
-      info = "🤏Too low!";
-      score -= score;
+    if (randomNumber > +enteredNumberValue) {
+      info.textContent = "🤏Too low!";
+      console.log(totaltry, 'totaltry');
+      score.textContent = totaltry - 1;
+      totaltry -= 1;
     }
     //equal
-    else if (randomNumber === enteredNumberValue) {
-      info = "🎉Correct Number!";
-      highScore = 20 - tryNumber;
+    else if (randomNumber === +enteredNumberValue) {
+      info.textContent = "🎉Correct Number!";
+      highScore.textContent = 20 - tryNumber;
       document.body.style.backgroundColor = "green";
     }
     //too high
-    else if (randomNumber < enteredNumberValue) {
-      info = "👆Too high!";
-      score -= score;
+    else if (randomNumber < +enteredNumberValue) {
+      info.textContent = "👆Too high!";
+      score.textContent = totaltry - 1;
+      totaltry -= 1;
     }
+    tryNumber += 1;
   }
 };
 
