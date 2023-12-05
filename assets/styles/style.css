@@ -2,8 +2,10 @@
 
 * {
   box-sizing: border-box;
-  background-color: rgb(221, 215, 215);
   font-family: "Perfect DOS VGA 437", "Fixedsys";
+}
+
+body {
   background-color: black;
 }
 
@@ -13,7 +15,7 @@
 }
 
 .banner button {
-  color: black;
+  /* color: black; */
   background-color: white;
   width: 9rem;
   height: 3rem;

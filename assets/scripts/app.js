@@ -33,6 +33,8 @@ const checkNumber = function () {
       info.textContent = "🎉Correct Number!";
       highScore.textContent = 20 - tryNumber;
       document.body.style.backgroundColor = "green";
+      // document.querySelector('enterednumbervalue').style.backgroundColor = "green";
+      document.querySelector('.square').textContent = randomNumber;
     }
     //too high
     else if (randomNumber < +enteredNumberValue) {
