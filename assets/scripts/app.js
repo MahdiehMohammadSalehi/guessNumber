@@ -1,54 +1,56 @@
-'use strict'
-// const enteredNumberValue =
-//   document.querySelector(".enterednumbervalue").textContent;
-const checkBtn = document.getElementById("checkbtn");
-let score = document.querySelector(".score");
-let highScore = document.querySelector(".highscore");
-let info = document.getElementById("info");
-let tryNumber = 0;
-let totaltry = 20;
-// const createRandomNumber = function () {
-//   let randomNumber = Math.random() * (20 - 1) + 1;
-//   return randomNumber;
-// };
+'use strict';
+
+const guessbtn = document.querySelector('.guessbtn');
+const againbtn = document.querySelector('.againbtn');
+
+let score = document.querySelector('.score').textContent;
+let highScore = document.querySelector('.highscore');
+let info = document.querySelector('.info-label');
+
+//fuction to create a number between 1 to 20
 const createRandomNumber = () => Math.trunc(Math.random() * 20) + 1;
-const randomNumber = createRandomNumber();
+let randomNumber = createRandomNumber();
 console.log(Number(randomNumber), 'randomnum');
 
-const checkNumber = function () {
-  if (totaltry > 0) {
-
-    const enteredNumberValue =
-      document.querySelector(".enterednumbervalue").value;
-    if (!enteredNumberValue) alert("enter a number")
-    else {
-      console.log(+enteredNumberValue, 'entered');
-      //too low:
-      if (randomNumber > +enteredNumberValue) {
-        info.textContent = "🤏Too low!";
-        console.log(totaltry, 'totaltry');
-        score.textContent = totaltry - 1;
-        totaltry -= 1;
-      }
-      //equal
-      else if (randomNumber === +enteredNumberValue) {
-        info.textContent = "🎉Correct Number!";
-        highScore.textContent = 20 - tryNumber;
-        document.body.style.backgroundColor = "green";
-        // document.querySelector('enterednumbervalue').style.backgroundColor = "green";
-        document.querySelector('.square').textContent = randomNumber;
-      }
-      //too high
-      else if (randomNumber < +enteredNumberValue) {
-        info.textContent = "👆Too high!";
-        score.textContent = totaltry - 1;
-        totaltry -= 1;
-      }
-      tryNumber += 1;
-    }
-  }
-  else
-    alert("your choices finished")
+//function to view message
+const message = function (msg, score) {
+  info.textContent = msg;
+  document.querySelector('.score').textContent = score;
 };
 
-checkBtn.addEventListener("click", checkNumber);
+//fuction to compare guess number by random number
+const checkNumber = function () {
+  const guessnumber = document.querySelector('.guessnumber').value;
+  if (+score > 0) {
+    //empty value:
+    if (!guessnumber) {
+      message('🔔Please enter a number', score);
+    } else {
+      score -= 1;
+      //equal case:
+      if (randomNumber === +guessnumber) {
+        if (Number(highScore.textContent) < score)
+          highScore.textContent = score;
+        message('🎉Correct Number!', score);
+        document.body.style.backgroundColor = 'green';
+        document.querySelector('.square').textContent = randomNumber;
+      } else {
+        randomNumber > +guessnumber
+          ? message('🤏Too low!', score)
+          : message('👆Too high!', score);
+      }
+    }
+  } else message('💣 You Losed The Game', score);
+};
+
+//again button pressed function:
+const againfunc = function () {
+  randomNumber = createRandomNumber();
+  console.log(Number(randomNumber), 'this randomnum');
+  document.querySelector('.guessnumber').value = '';
+  message('Start guessing...', 0);
+  document.body.style.backgroundColor = 'black';
+  document.querySelector('.square').textContent = '?';
+};
+guessbtn.addEventListener('click', checkNumber);
+againbtn.addEventListener('click', againfunc);

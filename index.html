@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess My Number!</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <script src="assets/scripts/app.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guess My Number!</title>
-  <link rel="stylesheet" href="./assets/styles/style.css" />
-  <script src="assets/scripts/app.js" defer></script>
-</head>
-
-<body>
-  <section class="banner">
-    <button>Again!</button>
-    <h3>(Between 1 and 20)</h3>
-  </section>
-  <p class="guesstxt">Guess My Number!</p>
-  <div class="square">?</div>
-  <!-- <hr size="8" color="white" /> -->
-  <div class="line"></div>
-
-  <section id="footer">
-    <div class="enterednumber">
-      <input class="enterednumbervalue" type="number" />
-      <button id="checkbtn">Check!</button>
-    </div>
-    <div class="stats">
-      <h1 id="info">Start guessing...</h1>
-      <div class="statsdetails">
-        <p class="score-label">💯Score:<span class="score">20</span></p>
+  <body>
+    <header>
+      <button class="againbtn">Again!</button>
+      <h3>(Between 1 and 20)</h3>
+      <p class="guesstxt">Guess My Number!</p>
+      <div class="square">?</div>
+    </header>
+    <main>
+      <div class="guessarea">
+        <input class="guessnumber" type="number" />
+        <button class="guessbtn">Check!</button>
+      </div>
+      <div class="infoarea">
+        <p class="info-label">Start guessing...</p>
+        <p class="score-label">💯Score:<span class="score"> 20</span></p>
         <p class="highscore-label">
-          🥇highscore:<span class="highscore">0</span>
+          🥇highscore:<span class="highscore"> 0</span>
         </p>
       </div>
-    </div>
-  </section>
-</body>
-
+    </main>
+  </body>
 </html>
